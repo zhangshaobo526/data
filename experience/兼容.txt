@@ -1,0 +1,49 @@
+主流浏览器所使用的内核分类
+Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等
+Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
+Presto内核：Opera7及以上
+Webkit内核：Safari,Chrome等
+经常遇到的浏览器的兼容性有哪些
+	1.就是ie6双倍边距的问题，在使用了float的情况下，不管是向左还是向右都会出现双倍，最简单的解决方法就是用display:inline;加到css里面去。
+	2.文字本身的大小不兼容。同样是font-size:14px的宋体文字，在不同浏览器下占的空间是不一样的，ie下实际占高16px，下留白3px，ff下实际占高17px，上留白1px，下留白3px，opera下就更不一样了。解决方案：给文字设定 line-height 。确保所有文字都有默认的 line-height 值。这点很重要，在高度上我们不能容忍1px 的差异。
+	3. ff下容器高度限定，即容器定义了height之后，容器边框的外形就确定了，不会被内容撑大，而ie下是会被内容撑大，高度限定失效。所以不要轻易给容器定义height。
+	4. 还讨论内容撑破容器问题，横向上的。如果float 容器未定义宽度，ff下内容会尽可能撑开容器宽度，ie下则会优先考虑内容折行。故，内容可能撑破的浮动容器需要定义width。
+	5. 浮动的清除，ff下不清除浮动是不行的。
+	6. mirrormargin bug，当外层元素内有float元素时，外层元素如定义margin-top:14px，将自动生成margin-bottom:14px。padding也会出现类似问题，都是ie6下的特产，该类bug 出现的情况较为复杂，远不只这一种出现条件，还没系统整理。解决方案：外层元素设定border 或 设定float。
+	7. 吞吃现象，限于篇幅，我就不展开了。还是ie6，上下两个div，上面的div设置背景，却发现下面没有设置背景的div 也有了背景，这就是吞吃现象。对应上面的背景吞吃现象，还有滚动下边框缺失的现象。解决方案：使用zoom:1。这个zoom好象是专门为解决ie6 bug而生的
+	1)png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8。
+	(2)浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+	(3)IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。
+	(4)IE下,可以使用获取常规属性的方法来获取自定义属性,也可以使用getAttribute()获取自定义属性;
+		Firefox下,只能使用getAttribute()获取自定义属性；
+		解决方法:统一通过getAttribute()获取自定义属性。
+	(5)IE下,even对象有x,y属性,但是没有pageX,pageY属性;
+			Firefox下,event对象有pageX,pageY属性,但是没有x,y属性；
+		解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+	(6)Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+css hack知道哪些？
+答：由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。
+	_color:red; 只有ie6生效    （IE6能识别下划线"_"和星号" * "）
+	*color:blue;       IE7能识别星号" * “
+	*+html .class{}IE7能识别
+	
+	在标准模式中：
+   	“-″减号是IE6专有的hack
+ 		 “\9″ IE6/IE7/IE8/IE9/IE10都生效
+		“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack
+		“\9\0″ 只对IE9/IE10生效，是IE9/10的hack
+
+
+css reset的作用和用途。
+	在HTML标签在浏览器里有默认的样式, 不同浏览器的默认样式之间也会有差别, 往往会给我们带来麻烦，影响开发效率。所以解决的方法就是一开始就将浏览器的默认样式全部	去掉，更准确说就是通过重新定义标签样式让他们统一. 这就是CSS reset。
+为什么要初始化CSS样式。(面试官主要考的是对标签的默认样式了解)
+	1.因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+	2.初始化CSS样式主要是提高编码质量，如果不初始化整个页面做完很糟糕，重复的css样式很多。
+	去掉标签的默认样式如：margin，padding ，其它浏览器默认解析字体大小字体设置
+		html,body, dl, dd, h1, h2, h3, h4, h5, h6, p, form{margin:0;} 
+		ul,ol,li{margin:0;padding:0}
+
+css sprites以及如何使用。
+CSSSprites在国内很多人叫css精灵，是一种网页图片应用处理方式。它允许你将一个页面涉及到的所有零星图片都包含到一张大图中去，这样一来，当访问该页面时，载入的图片就不会像以前那样一幅一幅地慢慢显示出来了
+把网页中一些背景图片整合到一张图片文件中，再利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字精确的定位出背景图片的位置。
+

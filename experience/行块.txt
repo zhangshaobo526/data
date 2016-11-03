@@ -1,0 +1,48 @@
+块属性标签与行属性标签的区别？
+块级元素具有以下特点：
+	①总是在新行上开始，占据一整行；
+	②高度，行高以及外边距和内边距都可控制；
+	③宽如果不设置,默认是父级的宽度，与内容无关；
+	④它可以容纳内联元素和其他块元素。
+行内元素的特点：
+	①和其他元素都在一行上；
+	②高，行高及外边距和内边距部分可改变；
+	③宽度只与内容有关；
+	④行内元素只能容纳文本或者其他行内元素。不可以设置宽高，其宽度随着内容增加，高度随字体大小而改变，内联元素可以设置外边界，但是外边界不对上下起作用，只能对左右起作用，也可以设置内边界，但是内边界在ie6中不对上下起作用，只能对左右起作用
+哪些标签是块属性的，哪些是行的?
+http://www.cnblogs.com/imihiroblog/archive/2012/08/28/2660370.html
+display的属性值有哪些？
+none：			此元素不会被显示。
+block：			此元素将显示为块级元素，此元素前后会带有换行符。
+inline：			默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block	：	行内块元素。
+table-cell：		此元素会作为一个表格单元格显示（类似 <td> 和 <th>）
+visibility:hidden隐藏，但在浏览时保留位置；CSS display:none视为不存在，且不加载！
+在页面内居中（水平和垂直方向）
+	垂直居中:水平方向给父级设置text-align;使用左右margin值为auto
+	竖直方向:设置line-height值为元素高度;设置元素绝对定位,top:0;bottom:0 margin:auto, 0;
+一、字体属性主要包括下面几个
+font-family，font-style，font-variant，font-weight，font-size，font
+font-family（字体族）: “Arial”、“Times New Roman”、“宋体”、“黑体”等;
+font-style（字体样式）: normal（正常）、italic（斜体）或oblique（倾斜）;
+font-variant (字体变化): normal（正常）或small-caps（小体大写字母）;
+font-weight (字体浓淡): 是normal（正常）或bold（加粗）。有些浏览器甚至支持采用100到900之间的数字（以百为单位）;
+font-size（字体大小）: 可通过多种不同单位（比如像素或百分比等）来设置, 如：12xp，12pt，120%，1em
+如果用 font 属性的话，就可以把几个样式进行简化，减少书的情况；font 属性的值应按以下次序书写(各个属性之间用空格隔开)：
+顺序：font-style | font-variant | font-weight | font-size | line-height | font-family
+二、font的简写实例
+.font{
+font-style:italic;
+font-variant:small-caps;
+font-weight:bold;
+font-size:12px;
+line-height:1.5em;
+font-family:arial,verdana;
+}
+上面的样式简写为：
+.font{font:italic small-caps bold 12px/1.5em arial,verdana;}
+三、font的简写注意事项
+1、简写时，font-size和line-height只能通过斜杠/组成一个值，不能分开写。
+2、顺序不能改变.这种简写方法只有在同时指定font-size和font-family属性时才起作用。而且，如果你没有设定font-weight, font-style, 以及 font-varient ，他们会使用缺省值
+Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+权重的规则：标签的权重为1，class的权重为10，id的权重为100 ，style 1000，

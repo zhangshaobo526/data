@@ -1,0 +1,39 @@
+1本地缓存
+	cookies，sessionStorage 和 localStorage 的区别？
+		（1）cookie在浏览器和服务器间来回传递， sessionStorage和localStorage不会。
+		（2）sessionStorage和localStorage的存储空间更大。
+		（3）sessionStorage和localStorage有更多丰富易用的接口。
+		（4）sessionStorage和localStorage各自独立的存储空间。
+2本地定位
+		Geolocation（地理定位）用于定位用户的位置。
+		Internet Explorer 9、Firefox、Chrome、Safari 以及 Opera 支持地理定位。
+3即时通信
+		websocket
+		WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。一开始的握手需要借助HTTP请求完成。
+		较新的技术去做轮询的效果是Comet – 用了AJAX。但这种技术虽然可达到全双工通信，但依然需要发出请求。
+在 WebSocket API，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。在此WebSocket 协议中，为我们实现即时服务带来了两大好处：1. Header互相沟通的Header是很小的-大概只有 2 Bytes2. Server Push服务器的推送，服务器不再被动的接收到浏览器的request之后才返回数据，而是在有新数据时就主动推送给浏览器。	
+4canvas
+5表单属性
+类型
+	email
+	url
+	number
+	range
+	Date pickers (date, month, week, time, datetime, datetime-local)
+	search
+	color
+属性
+	autocomplete
+	autofocus
+	form
+	form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+	height 和 width
+	list
+	min, max 和 step
+	multiple
+	pattern (regexp)
+	placeholder
+	required
+
+6video
+7audio

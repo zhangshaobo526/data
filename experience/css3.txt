@@ -1,0 +1,23 @@
+CSS3有哪些新特性
+圆角:border-radius
+阴影:box-shadow
+线性渐变:gradient，
+旋转:transform
+transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+增加了更多的CSS选择器nth-child
+背景透明 rgba
+更多选择器参考地址：http://www.runoob.com/cssref/css-selectors.html
+其它模块：
+media queries:感觉叫媒体选择比较合适，可以为网页中不同的对象设置不同的浏览设备。比如可以为某一块分别设置屏幕浏览样式和手机浏览样式，以前则只能设置整个网页。
+multi-column layout:多列布局，让文字以多列显示，包括column-width、column-count、column-gap三个值
+column-width:指定每列宽度
+column-count:指定列数
+column-gap:指定每列之间的间距
+column-rule-color:控制列间的颜色
+column-rule-style:控制列间的样式
+column-rule-width:控制列间的宽度
+column-space-distribution:平均分配列间距
+CSS3的Flexbox弹性盒布局模型
+主要应用场景为：移动端布局
+flexbox的布局是一个用于页面布局的全新CSS3模块功能。它可以把列表放在同一个方向（从左到右或从上到下排列），并且让这些列表能延伸到占用可用的空间。较为复杂的布局可以通过嵌套一个伸缩容器（flex container）来辅助实现。
+Flexbox可以简单快速的创建一个具有弹性功能的布局，当在一个小屏幕上显示的时候，Flexbox可以让元素在容器（伸缩容器）中进行自由扩展和收缩，从而容易调整整个布局。它的目的是使用常见的布局模式，比如说三列布局，可以非常简单的实现。

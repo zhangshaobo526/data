@@ -1,0 +1,66 @@
+响应式布局  
+	自适应屏幕大小进行展示，并且获得比较好的体验。
+	其中，浏览器的兼容是很大的一个技术点，而布局设计是一个设计难点。 
+	如果将响应式布局简单理解为浏览器兼容又大合适，这样的技术在很多年前就已经有提出并有解决方案。以前的浏览器兼容，屏幕大小是相似的，操作习惯是相同的，所以兼容只要不用浏览器或者平台展示的样子一模一样就可以。
+	而响应式布局并不是说要展现得一样。比如说菜单，在PC可以是左右布局，直接展示。而在手机上，不应该是PC上的缩小版，而应该是菜单屏展示，类似手机原生应用，这就是所谓的不同媒介的适应性体验。
+	响应式设计的基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理。
+	页面头部必须有meta声明viewport：<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+流式布局（百分比布局）
+浮动布局
+定位布局
+公司现在用的统计平台：
+https://mtj.baidu.com/web/demo/terminal?appId=468475
+http://tongji.baidu.com/data/mobile/brand
+CSS的盒子模型
+ IE 盒子模型：标准 W3C 盒子模型；IE的content部分包含了 border 和 pading;
+	  盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border).
+
+常用布局属性有哪些？有什么特点？
+margin , padding , position , float
+常用布局
+http://www.codesec.net/view/404576.html
+position
+	绝对定位就是你的位置已经不属于你了，你只能漂浮在半空中。
+	相对定位就是你的位置你还占用的，人还在飘着
+	有意思的是这些都是相对父辈元素有position为相对或者绝对属性来定位的，都找不到的话就以body窗口来定位
+	因为绝对定位（和文档流没关系）如无申明，则其是对与body而言的，处理不好的话。如显示器尺寸变了，可能就会变型。 
+	相对定位的元素属文档流，所以稳定的，相对定位是相对他该出现的位置，如无设top left之类，和普通div基本一样。 
+	一般的绝对定位是这样用的，父元素要是相对定位的且须有布局，如有个高度，这样子元素用绝对定位，就可以相对它的父元素进行绝对定位，父元素若不这样做，那么子元素用	绝对定位其实是相对body定位
+	position:fixed;在android下无效怎么处理？
+		使用js处理判断当前设备是否是android，如果是则添加监听当前页面滚动情况，设置position:absolute;不断的改变top值
+为什么要清除浮动，有哪些方式？
+	归根结底需要多浏览器兼容性的问题了如指掌
+	一个块级元素的高度如果没有设置height，那么其高度就是由里面的子元素来撑开的，如果子元素使用浮动，脱离了标准的文档流，那么父元素的高度会将其忽略，如果不清除浮动，父元素会出现高度不够，那样如果设置border或者background都得不到正确的解析。
+清除浮动的方法：区分以下哪些是最好的方案（1~5不可取）
+1)在浮动元素下加子元素<div class="clear"></div>然后设置样式.clear{ height:0px;font-size:0;clear:both;}；
+2)在浮动元素下面（与浮动元素同级）加<br clear="all"/>
+3)给浮动元素的父级也加浮动(这种情况当父级margin:0 auto时不居中)
+4)给父级加display:inline-block;(同方法2,不居中,只有IE6,7居中)
+5)给浮动元素父级加overflow:auto;
+6）经典用法
+ .clear,.clear-all{clear:both;font-size:0;height:0;line-height:0;overflow:hidden}
+.fix:after,.clearfix:after{clear:both;content:" ";display:block;font-size:0;height:0;visibility:hidden}
+.fix,.clearfix{*zoom:1}
+解释下浮动和它的工作原理？清除浮动的技巧
+答：浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。
+1.使用空标签清除浮动。
+   这种方法是在所有浮动标签后面添加一个空标签 定义css clear:both. 弊端就是增加了无意义标签。
+2.使用overflow。
+   给包含浮动元素的父标签添加css属性 overflow:auto; zoom:1; zoom:1用于兼容IE6。
+3.使用after伪对象清除浮动。
+   该方法只适用于非IE浏览器。具体写法可参照以下示例。使用中需注意以下几点。一、该方法中必须为需要清除浮动元素的伪对象中设置 height:0，否则该元素会比实际高出若干像素；
+浮动元素引起的问题：
+（1）父元素的高度无法被撑开，影响与父元素同级的元素
+（2）与浮动元素同级的非浮动元素（内联元素）会跟随其后
+（3）若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
+解决方法：
+使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，对于问题1，添加如下样式，给父元素添加clearfix样式：
+清除浮动的几种方法：
+1，额外标签法，<div style="clear:both;"></div>（缺点：不过这个办法会增加额外的标签使HTML结构看起来不够简洁。）
+2，使用after伪类
+margin , padding 
+	margin是设置元素外边距的属性，W3C官方解释为：围绕在元素边框的空白区域是外边距。设置外边距会在元素外创建额外的“空白”。设置外边距的最简单的方法就是使用		margin属性，这个属性接受任何长度单位、百分数值甚至负值。
+	Padding是设置元素内边距的属性，W3C的官方解释为：元素的内边距在边框和内容区之间。控制该区域最简单的属性是 padding 属性。CSS padding 属性定义元素边框与元素	内容之间的空白区域。
+	上下两个元素之间的间距使用margin合适。
+	padding的使用是针对当前设置元素的内边距
+	在项目里面能用padding搞定的坚决不使用margin。
