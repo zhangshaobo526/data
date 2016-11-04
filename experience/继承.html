@@ -21,10 +21,10 @@
 			Person.apply(this,[name,age])
 			this.sex=sex;
 		}
-		for (var i in Person.prototype) {
+		for (var i in Person.prototype) {//原型对象继承
 			Son.prototype=Person.prototype;
 		}
-		var son=new Son("zhang",5,"男");
+		var son=new Son("zhang",5,"男");//实例化对象
 		console.log(son.name);
 		console.log(son.say());
 	</script>
